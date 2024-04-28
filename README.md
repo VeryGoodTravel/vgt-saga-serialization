@@ -4,5 +4,5 @@ Library used by the saga microservices to specify communication object mapping.
 
 ## Contents:
 - Custom Json converter
-- Requests implementing IRequest
-- Replies implementing IReply
+- Message containing basic SAGA informations
+- MessageBody implementing IMessageBody and specifying different types of messages with their content

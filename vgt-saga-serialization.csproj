@@ -5,15 +5,12 @@
         <RootNamespace>vgt_saga_serialization</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <DocumentationFile>SagaMessagesDocumentation.xml</DocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Replies\" />
-      <Folder Include="Requests\" />
     </ItemGroup>
 
 </Project>
