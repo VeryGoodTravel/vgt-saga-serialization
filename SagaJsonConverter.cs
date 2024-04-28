@@ -4,8 +4,13 @@ using vgt_saga_serialization.MessageBodies;
 
 namespace vgt_saga_serialization;
 
+/// <summary>
+/// Converter class used to differentiate between implemented types of the message body.
+/// Serializes and deserializes json to and from the targeted record structs.
+/// </summary>
 public class SagaJsonConverter : JsonConverter 
 {
+    /// <inheritdoc/>
     public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
     {
         ArgumentNullException.ThrowIfNull(value);
@@ -16,6 +21,11 @@ public class SagaJsonConverter : JsonConverter
         o.WriteTo(writer);
     }
 
+    /// <summary>
+    /// Deserializes json to targeted MessageBody
+    /// </summary>
+    /// <inheritdoc/>
+    /// <returns> IMessageBody of the appropriate type </returns>
     public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
     {
         var jToken = JToken.ReadFrom(reader);
@@ -46,7 +56,8 @@ public class SagaJsonConverter : JsonConverter
 
         return result;
     }
-
+    
+    /// <inheritdoc/>
     public override bool CanConvert(Type objectType)
     {
         return objectType == typeof(IMessageBody);
