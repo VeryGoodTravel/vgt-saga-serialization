@@ -89,5 +89,53 @@
             specifies that the message is invalid
             </summary>
         </member>
+        <member name="T:vgt_saga_serialization.SagaJsonConverter">
+            <summary>
+            Converter class used to differentiate between implemented types of the message body.
+            Serializes and deserializes json to and from the targeted record structs.
+            </summary>
+        </member>
+        <member name="M:vgt_saga_serialization.SagaJsonConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <inheritdoc/>
+        </member>
+        <member name="M:vgt_saga_serialization.SagaJsonConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Deserializes json to targeted MessageBody
+            </summary>
+            <inheritdoc/>
+            <returns> IMessageBody of the appropriate type </returns>
+        </member>
+        <member name="M:vgt_saga_serialization.SagaJsonConverter.CanConvert(System.Type)">
+            <inheritdoc/>
+        </member>
+        <member name="T:vgt_saga_serialization.Utils">
+            <summary>
+            Util class for the SAGA messages serialization handling.
+            Util offers deserialization and serialization of the JSON messages to the appropriate types of the messages.
+            Uses custom JsonConverter.
+            </summary>
+        </member>
+        <member name="M:vgt_saga_serialization.Utils.#ctor(NLog.Logger)">
+            <summary>
+            Default constructor for the Utils class.
+            Utils object specifies the appropriate logger for the operations.
+            </summary>
+            <param name="log"></param>
+        </member>
+        <member name="M:vgt_saga_serialization.Utils.Deserialize(System.Byte[])">
+            <summary>
+            Deserializes JSON written in bytes from the RabbitMQ to the Saga Message struct
+            with targeted and appropriate MessageBody of the specified Type.
+            </summary>
+            <param name="body"> Json in bytes to deserialize </param>
+            <returns> null if invalid otherwise deserialized Saga Message</returns>
+        </member>
+        <member name="M:vgt_saga_serialization.Utils.Serialize(vgt_saga_serialization.Message)">
+            <summary>
+            Serializes SAGA Message struct to a string JSON
+            </summary>
+            <param name="message"> Saga Message struct to serialize </param>
+            <returns> string containing JSON </returns>
+        </member>
     </members>
 </doc>
