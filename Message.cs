@@ -17,11 +17,6 @@ public record struct Message
     /// A unique identifier per message
     /// </summary>
     public string MessageId { get; }
-    
-    /// <summary>
-    /// The name of the service that is sending the message
-    /// </summary>
-    public string Source { get; }
 
     /// <summary>
     /// The creation date of the message
@@ -35,9 +30,15 @@ public record struct Message
     public MessageType MessageType { get; }
     
     /// <summary>
+    /// Saga transaction state of the message
+    /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
+    public SagaState State { get; }
+    
+    /// <summary>
     /// Body of the command of type specified in MessageType
     /// </summary>
-    public IMessageBody Body { get; }
+    public IMessageBody? Body { get; }
 }
 
 /// <summary>
@@ -81,4 +82,79 @@ public enum MessageType
     /// specifies that the message is invalid
     /// </summary>
     Invalid
+}
+
+/// <summary>
+/// Implemented Saga states the transaction could be on
+/// </summary>
+public enum SagaState
+{
+    /// <summary>
+    /// saga transaction has started
+    /// </summary>
+    Begin,
+    /// <summary>
+    /// saga hotel timed reservation passed successfully
+    /// </summary>
+    HotelTimedAccept,
+    /// <summary>
+    /// saga hotel timed reservation failed
+    /// </summary>
+    HotelTimedFail,
+    /// <summary>
+    /// saga hotel timed reservation rollback
+    /// </summary>
+    HotelTimedRollback,
+    /// <summary>
+    /// saga hotel full reservation passed successfully
+    /// </summary>
+    HotelFullAccept,
+    /// <summary>
+    /// saga hotel full reservation failed
+    /// </summary>
+    HotelFullFail,
+    /// <summary>
+    /// saga hotel full reservation rollback
+    /// </summary>
+    HotelFullRollback,
+    /// <summary>
+    /// saga flight timed reservation passed successfully
+    /// </summary>
+    FlightTimedAccept,
+    /// <summary>
+    /// saga flight timed reservation failed
+    /// </summary>
+    FlightTimedFail,
+    /// <summary>
+    /// saga flight timed reservation rollback
+    /// </summary>
+    FlightTimedRollback,
+    /// <summary>
+    /// saga flight full reservation passed successfully
+    /// </summary>
+    FlightFullAccept,
+    /// <summary>
+    /// saga flight full reservation failed
+    /// </summary>
+    FlightFullFail,
+    /// <summary>
+    /// saga flight full reservation rollback
+    /// </summary>
+    FlightFullRollback,
+    /// <summary>
+    /// saga payment passed successfully
+    /// </summary>
+    PaymentAccept,
+    /// <summary>
+    /// saga payment failed
+    /// </summary>
+    PaymentFailed,
+    /// <summary>
+    /// saga transaction passed successfully
+    /// </summary>
+    SagaSuccess,
+    /// <summary>
+    /// saga transaction failed
+    /// </summary>
+    SagaFail
 }

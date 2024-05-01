@@ -4,6 +4,12 @@
         <name>vgt-saga-serialization</name>
     </assembly>
     <members>
+        <member name="T:vgt_saga_serialization.IMessageBody">
+            <summary>
+            Message body of the request or reply
+            contains data needed by the microservice for the transaction
+            </summary>
+        </member>
         <member name="T:vgt_saga_serialization.Message">
             <summary>
             Main message template of the SAGA messages
@@ -19,11 +25,6 @@
             A unique identifier per message
             </summary>
         </member>
-        <member name="P:vgt_saga_serialization.Message.Source">
-            <summary>
-            The name of the service that is sending the message
-            </summary>
-        </member>
         <member name="P:vgt_saga_serialization.Message.CreationDate">
             <summary>
             The creation date of the message
@@ -32,6 +33,11 @@
         <member name="P:vgt_saga_serialization.Message.MessageType">
             <summary>
             A message type used by producers/consumers to identify events and commands
+            </summary>
+        </member>
+        <member name="P:vgt_saga_serialization.Message.State">
+            <summary>
+            Saga transaction state of the message
             </summary>
         </member>
         <member name="P:vgt_saga_serialization.Message.Body">
@@ -87,6 +93,289 @@
         <member name="F:vgt_saga_serialization.MessageType.Invalid">
             <summary>
             specifies that the message is invalid
+            </summary>
+        </member>
+        <member name="T:vgt_saga_serialization.SagaState">
+            <summary>
+            Implemented Saga states the transaction could be on
+            </summary>
+        </member>
+        <member name="F:vgt_saga_serialization.SagaState.Begin">
+            <summary>
+            saga transaction has started
+            </summary>
+        </member>
+        <member name="F:vgt_saga_serialization.SagaState.HotelTimedAccept">
+            <summary>
+            saga hotel timed reservation passed successfully
+            </summary>
+        </member>
+        <member name="F:vgt_saga_serialization.SagaState.HotelTimedFail">
+            <summary>
+            saga hotel timed reservation failed
+            </summary>
+        </member>
+        <member name="F:vgt_saga_serialization.SagaState.HotelTimedRollback">
+            <summary>
+            saga hotel timed reservation rollback
+            </summary>
+        </member>
+        <member name="F:vgt_saga_serialization.SagaState.HotelFullAccept">
+            <summary>
+            saga hotel full reservation passed successfully
+            </summary>
+        </member>
+        <member name="F:vgt_saga_serialization.SagaState.HotelFullFail">
+            <summary>
+            saga hotel full reservation failed
+            </summary>
+        </member>
+        <member name="F:vgt_saga_serialization.SagaState.HotelFullRollback">
+            <summary>
+            saga hotel full reservation rollback
+            </summary>
+        </member>
+        <member name="F:vgt_saga_serialization.SagaState.FlightTimedAccept">
+            <summary>
+            saga flight timed reservation passed successfully
+            </summary>
+        </member>
+        <member name="F:vgt_saga_serialization.SagaState.FlightTimedFail">
+            <summary>
+            saga flight timed reservation failed
+            </summary>
+        </member>
+        <member name="F:vgt_saga_serialization.SagaState.FlightTimedRollback">
+            <summary>
+            saga flight timed reservation rollback
+            </summary>
+        </member>
+        <member name="F:vgt_saga_serialization.SagaState.FlightFullAccept">
+            <summary>
+            saga flight full reservation passed successfully
+            </summary>
+        </member>
+        <member name="F:vgt_saga_serialization.SagaState.FlightFullFail">
+            <summary>
+            saga flight full reservation failed
+            </summary>
+        </member>
+        <member name="F:vgt_saga_serialization.SagaState.FlightFullRollback">
+            <summary>
+            saga flight full reservation rollback
+            </summary>
+        </member>
+        <member name="F:vgt_saga_serialization.SagaState.PaymentAccept">
+            <summary>
+            saga payment passed successfully
+            </summary>
+        </member>
+        <member name="F:vgt_saga_serialization.SagaState.PaymentFailed">
+            <summary>
+            saga payment failed
+            </summary>
+        </member>
+        <member name="F:vgt_saga_serialization.SagaState.SagaSuccess">
+            <summary>
+            saga transaction passed successfully
+            </summary>
+        </member>
+        <member name="F:vgt_saga_serialization.SagaState.SagaFail">
+            <summary>
+            saga transaction failed
+            </summary>
+        </member>
+        <member name="T:vgt_saga_serialization.MessageBodies.FlightReply">
+            <summary>
+            reply of the hotel service
+            </summary>
+        </member>
+        <member name="M:vgt_saga_serialization.MessageBodies.FlightReply.#ctor">
+            <summary>
+            reply of the hotel service
+            </summary>
+        </member>
+        <member name="P:vgt_saga_serialization.MessageBodies.FlightReply.FlightId">
+            <summary>
+            ID number of the flight that got selected
+            </summary>
+        </member>
+        <member name="P:vgt_saga_serialization.MessageBodies.FlightReply.ReturnFlightId">
+            <summary>
+            ID number of the return flight that got selected
+            </summary>
+        </member>
+        <member name="P:vgt_saga_serialization.MessageBodies.FlightReply.SeatNr">
+            <summary>
+            List of seats selected
+            </summary>
+        </member>
+        <member name="T:vgt_saga_serialization.MessageBodies.FlightRequest">
+            <summary>
+            request to the hotel service
+            contains definition if the reservation is temporary (wait for payment)
+            and all the data service needs
+            </summary>
+        </member>
+        <member name="M:vgt_saga_serialization.MessageBodies.FlightRequest.#ctor">
+            <summary>
+            request to the hotel service
+            contains definition if the reservation is temporary (wait for payment)
+            and all the data service needs
+            </summary>
+        </member>
+        <member name="P:vgt_saga_serialization.MessageBodies.FlightRequest.Temporary">
+            <summary>
+            If the flight needs to be reserved for a limited time waiting for a payment
+            </summary>
+        </member>
+        <member name="P:vgt_saga_serialization.MessageBodies.FlightRequest.CityFrom">
+            <summary>
+            City the flight takes off
+            </summary>
+        </member>
+        <member name="P:vgt_saga_serialization.MessageBodies.FlightRequest.CityTo">
+            <summary>
+            city the flight lands in
+            </summary>
+        </member>
+        <member name="P:vgt_saga_serialization.MessageBodies.FlightRequest.BookFrom">
+            <summary>
+            date the flight to the hotel takes place
+            </summary>
+        </member>
+        <member name="P:vgt_saga_serialization.MessageBodies.FlightRequest.BookTo">
+            <summary>
+            date the return flight takes place
+            </summary>
+        </member>
+        <member name="P:vgt_saga_serialization.MessageBodies.FlightRequest.PassangerCount">
+            <summary>
+            amount of the passengers to take
+            </summary>
+        </member>
+        <member name="P:vgt_saga_serialization.MessageBodies.FlightRequest.FlightId">
+            <summary>
+            Flight ID to book on full book
+            </summary>
+        </member>
+        <member name="P:vgt_saga_serialization.MessageBodies.FlightRequest.SeatNr">
+            <summary>
+            Seats on the flight to fully book
+            </summary>
+        </member>
+        <member name="T:vgt_saga_serialization.MessageBodies.HotelReply">
+            <summary>
+            reply of the hotel service
+            </summary>
+        </member>
+        <member name="M:vgt_saga_serialization.MessageBodies.HotelReply.#ctor">
+            <summary>
+            reply of the hotel service
+            </summary>
+        </member>
+        <member name="P:vgt_saga_serialization.MessageBodies.HotelReply.RoomId">
+            <summary>
+            RoomId booked
+            </summary>
+        </member>
+        <member name="T:vgt_saga_serialization.MessageBodies.HotelRequest">
+            <summary>
+            request to the hotel service
+            contains definition if the reservation is temporary (wait for payment)
+            and all the data service needs
+            </summary>
+        </member>
+        <member name="M:vgt_saga_serialization.MessageBodies.HotelRequest.#ctor">
+            <summary>
+            request to the hotel service
+            contains definition if the reservation is temporary (wait for payment)
+            and all the data service needs
+            </summary>
+        </member>
+        <member name="P:vgt_saga_serialization.MessageBodies.HotelRequest.Temporary">
+            <summary>
+            If the hotel needs to be reserved for a limited time waiting for a payment
+            </summary>
+        </member>
+        <member name="P:vgt_saga_serialization.MessageBodies.HotelRequest.RoomType">
+            <summary>
+            type of the room to find and book
+            </summary>
+        </member>
+        <member name="P:vgt_saga_serialization.MessageBodies.HotelRequest.HotelName">
+            <summary>
+            Hotel name the room should be looked for
+            </summary>
+        </member>
+        <member name="P:vgt_saga_serialization.MessageBodies.HotelRequest.AirportCity">
+            <summary>
+            City of the airport the hotel uses
+            </summary>
+        </member>
+        <member name="P:vgt_saga_serialization.MessageBodies.HotelRequest.BookFrom">
+            <summary>
+            date to book the hotel from
+            </summary>
+        </member>
+        <member name="P:vgt_saga_serialization.MessageBodies.HotelRequest.BookTo">
+            <summary>
+            date to book the hotel to
+            </summary>
+        </member>
+        <member name="P:vgt_saga_serialization.MessageBodies.HotelRequest.RoomId">
+            <summary>
+            RoomId to fully book
+            </summary>
+        </member>
+        <member name="T:vgt_saga_serialization.MessageBodies.OrderReply">
+            <summary>
+            all the saga order transaction data that needs to be returned? 
+            </summary>
+        </member>
+        <member name="M:vgt_saga_serialization.MessageBodies.OrderReply.#ctor">
+            <summary>
+            all the saga order transaction data that needs to be returned? 
+            </summary>
+        </member>
+        <member name="T:vgt_saga_serialization.MessageBodies.OrderRequest">
+            <summary>
+            All the saga order transaction data
+            </summary>
+        </member>
+        <member name="M:vgt_saga_serialization.MessageBodies.OrderRequest.#ctor">
+            <summary>
+            All the saga order transaction data
+            </summary>
+        </member>
+        <member name="T:vgt_saga_serialization.MessageBodies.PaymentReply">
+            <summary>
+            reply of the payment gate, current no additional data needed
+            </summary>
+        </member>
+        <member name="M:vgt_saga_serialization.MessageBodies.PaymentReply.#ctor">
+            <summary>
+            reply of the payment gate, current no additional data needed
+            </summary>
+        </member>
+        <member name="T:vgt_saga_serialization.MessageBodies.PaymentRequest">
+            <summary>
+            request to the payment gate with the amount to pay and currency specified
+            </summary>
+        </member>
+        <member name="M:vgt_saga_serialization.MessageBodies.PaymentRequest.#ctor">
+            <summary>
+            request to the payment gate with the amount to pay and currency specified
+            </summary>
+        </member>
+        <member name="P:vgt_saga_serialization.MessageBodies.PaymentRequest.Amount">
+            <summary>
+            Amount to pay
+            </summary>
+        </member>
+        <member name="P:vgt_saga_serialization.MessageBodies.PaymentRequest.Currency">
+            <summary>
+            Currency of the payment
             </summary>
         </member>
         <member name="T:vgt_saga_serialization.SagaJsonConverter">
