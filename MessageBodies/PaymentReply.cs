@@ -1,3 +1,9 @@
 namespace vgt_saga_serialization.MessageBodies;
 
-public record struct PaymentReply() : IMessageBody ;
+/// <summary>
+/// reply of the payment gate, current no additional data needed
+/// </summary>
+public record struct PaymentReply() : IMessageBody
+{
+    
+}

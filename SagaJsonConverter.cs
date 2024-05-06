@@ -37,7 +37,7 @@ public class SagaJsonConverter : JsonConverter
         else bodyType = MessageType.Invalid;
 
         // read appropriate type of the message
-        IMessageBody result = (MessageType?)bodyType switch
+        IMessageBody? result = (MessageType?)bodyType switch
         {
             MessageType.OrderRequest => new OrderRequest(),
             MessageType.OrderReply => new OrderReply(),
@@ -47,12 +47,11 @@ public class SagaJsonConverter : JsonConverter
             MessageType.HotelReply => new HotelReply(),
             MessageType.FlightRequest => new FlightRequest(),
             MessageType.FlightReply => new FlightReply(),
-            MessageType.Invalid => new Invalid(),
-            null => new Invalid(),
-            _ => new Invalid()
+            null => null,
+            _ => null
         };
         
-        serializer.Populate(jToken.CreateReader(), result);
+        if(result != null) serializer.Populate(jToken.CreateReader(), result);
 
         return result;
     }
