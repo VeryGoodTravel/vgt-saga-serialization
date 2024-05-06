@@ -11,33 +11,33 @@ public record struct Message
     /// <summary>
     /// A unique identifier that spans the whole transaction
     /// </summary>
-    public string TransactionId { get; }
+    public string TransactionId { get; set; }
 
     /// <summary>
     /// A unique identifier per message
     /// </summary>
-    public string MessageId { get; }
+    public string MessageId { get; set; }
     
     /// <summary>
     /// The name of the service that is sending the message
     /// </summary>
-    public string Source { get; }
+    public string Source { get; set; }
 
     /// <summary>
     /// The creation date of the message
     /// </summary>
-    public DateTime CreationDate { get; }
+    public DateTime CreationDate { get; set; }
     
     /// <summary>
     /// A message type used by producers/consumers to identify events and commands
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    public MessageType MessageType { get; }
+    public MessageType MessageType { get; set; }
     
     /// <summary>
     /// Body of the command of type specified in MessageType
     /// </summary>
-    public IMessageBody Body { get; }
+    public IMessageBody Body { get; set; }
 }
 
 /// <summary>
