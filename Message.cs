@@ -11,12 +11,12 @@ public record struct Message
     /// <summary>
     /// A unique identifier that spans the whole transaction
     /// </summary>
-    public string TransactionId { get; set; }
+    public Guid TransactionId { get; set; }
 
     /// <summary>
     /// A unique identifier per message
     /// </summary>
-    public string MessageId { get; set; }
+    public int? MessageId { get; set; }
 
     /// <summary>
     /// The creation date of the message
