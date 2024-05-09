@@ -90,6 +90,18 @@
             body type of the requests incoming from the Flight microservice
             </summary>
         </member>
+        <member name="F:vgt_saga_serialization.MessageType.BackendRequest">
+            <summary>
+            body type of the request from the WebApp backend,
+            contains all required data needed to start order saga transaction
+            </summary>
+        </member>
+        <member name="F:vgt_saga_serialization.MessageType.BackendReply">
+            <summary>
+            body type of the reply to the backend from the Saga Order Service,
+            notifies all backend that the transaction finished
+            </summary>
+        </member>
         <member name="F:vgt_saga_serialization.MessageType.Invalid">
             <summary>
             specifies that the message is invalid
@@ -183,6 +195,32 @@
         <member name="F:vgt_saga_serialization.SagaState.SagaFail">
             <summary>
             saga transaction failed
+            </summary>
+        </member>
+        <member name="T:vgt_saga_serialization.MessageBodies.BackendReply">
+            <summary>
+            reply from the OrderService to all the backends
+            notifies the backends of the finished saga transaction
+            It is sent to all instances of the backend
+            </summary>
+        </member>
+        <member name="M:vgt_saga_serialization.MessageBodies.BackendReply.#ctor">
+            <summary>
+            reply from the OrderService to all the backends
+            notifies the backends of the finished saga transaction
+            It is sent to all instances of the backend
+            </summary>
+        </member>
+        <member name="T:vgt_saga_serialization.MessageBodies.BackendRequest">
+            <summary>
+            request from the backend 
+            contains the data that is needed for the saga transaction order
+            </summary>
+        </member>
+        <member name="M:vgt_saga_serialization.MessageBodies.BackendRequest.#ctor">
+            <summary>
+            request from the backend 
+            contains the data that is needed for the saga transaction order
             </summary>
         </member>
         <member name="T:vgt_saga_serialization.MessageBodies.FlightReply">

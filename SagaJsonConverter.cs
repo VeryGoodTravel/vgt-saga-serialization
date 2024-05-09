@@ -47,6 +47,8 @@ public class SagaJsonConverter : JsonConverter
             MessageType.HotelReply => new HotelReply(),
             MessageType.FlightRequest => new FlightRequest(),
             MessageType.FlightReply => new FlightReply(),
+            MessageType.BackendRequest => new BackendRequest(),
+            MessageType.BackendReply => new BackendReply(),
             null => null,
             _ => null
         };

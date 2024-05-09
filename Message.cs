@@ -21,7 +21,7 @@ public record struct Message
     /// <summary>
     /// The creation date of the message
     /// </summary>
-    public DateTime CreationDate { get; set; }
+    public DateTime? CreationDate { get; set; }
     
     /// <summary>
     /// A message type used by producers/consumers to identify events and commands
@@ -33,7 +33,7 @@ public record struct Message
     /// Saga transaction state of the message
     /// </summary>
     [JsonConverter(typeof(StringEnumConverter))]
-    public SagaState State { get; set; }
+    public SagaState? State { get; set; }
     
     /// <summary>
     /// Body of the command of type specified in MessageType
@@ -78,6 +78,16 @@ public enum MessageType
     /// body type of the requests incoming from the Flight microservice
     /// </summary>
     FlightReply,
+    /// <summary>
+    /// body type of the request from the WebApp backend,
+    /// contains all required data needed to start order saga transaction
+    /// </summary>
+    BackendRequest,
+    /// <summary>
+    /// body type of the reply to the backend from the Saga Order Service,
+    /// notifies all backend that the transaction finished
+    /// </summary>
+    BackendReply,
     /// <summary>
     /// specifies that the message is invalid
     /// </summary>
