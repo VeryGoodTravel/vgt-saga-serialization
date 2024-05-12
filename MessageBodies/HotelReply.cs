@@ -5,8 +5,4 @@ namespace vgt_saga_serialization.MessageBodies;
 /// </summary>
 public record struct HotelReply() : IMessageBody
 {
-    /// <summary>
-    /// RoomId booked
-    /// </summary>
-    public int RoomId { get; }
 }

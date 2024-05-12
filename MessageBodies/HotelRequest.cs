@@ -10,30 +10,25 @@ public record struct HotelRequest() : IMessageBody
     /// <summary>
     /// If the hotel needs to be reserved for a limited time waiting for a payment
     /// </summary>
-    public bool Temporary { get; }
+    public bool Temporary { get; set; }
     /// <summary>
     /// type of the room to find and book
     /// </summary>
-    public int RoomType { get; }
+    public string RoomType { get; set; }
     /// <summary>
     /// Hotel name the room should be looked for
     /// </summary>
-    public string HotelName { get; }
-    /// <summary>
-    /// City of the airport the hotel uses
-    /// </summary>
-    public string AirportCity { get; }
+    public string HotelName { get; set; }
     /// <summary>
     /// date to book the hotel from
     /// </summary>
-    public DateTime BookFrom { get; }
+    public DateTime BookFrom { get; set; }
     /// <summary>
     /// date to book the hotel to
     /// </summary>
-    public DateTime BookTo { get; }
-    
+    public DateTime BookTo { get; set; }
     /// <summary>
-    /// RoomId to fully book
+    /// What datetime the temporary request was executed
     /// </summary>
-    public int? RoomId { get; }
+    public DateTime TemporaryDateTime { get; set; }
 }
