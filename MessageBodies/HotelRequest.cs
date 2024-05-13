@@ -31,4 +31,22 @@ public record struct HotelRequest() : IMessageBody
     /// What datetime the temporary request was executed
     /// </summary>
     public DateTime TemporaryDateTime { get; set; }
+    /// <summary>
+    /// How many adults in the booking request
+    /// </summary>
+    public int AdultCount { get; set; }
+    /// <summary>
+    /// How many children under 18yo in the booking request
+    /// </summary>
+    public int OldChildren { get; set; }
+    
+    /// <summary>
+    /// How many children under 10yo in the booking request
+    /// </summary>
+    public int MidChildren { get; set; }
+    
+    /// <summary>
+    /// How many children under 3yo in the booking request
+    /// </summary>
+    public int LesserChildren { get; set; }
 }
