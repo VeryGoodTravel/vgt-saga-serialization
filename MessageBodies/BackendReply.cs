@@ -1,5 +1,14 @@
 namespace vgt_saga_serialization.MessageBodies;
 
+public enum SagaAnswer
+{
+    Success,
+    HotelFailure,
+    FlightFailure,
+    PaymentFailure,
+    HotelAndFlightFailure
+}
+
 /// <summary>
 /// reply from the OrderService to all the backends
 /// notifies the backends of the finished saga transaction
@@ -7,11 +16,16 @@ namespace vgt_saga_serialization.MessageBodies;
 /// </summary>
 public record struct BackendReply() : IMessageBody
 {
-    // TODO: add data needed by the backend to have everthing that need to be send to the frontend
+    /// <summary>
+    /// Guid of the SAGA transaction
+    /// </summary>
+    public Guid TransactionId { get; set; }
     
-    // /// <summary>
-    // /// Amount to pay
-    // /// </summary>
-    // public long Amount { get; }
+    /// <summary>
+    /// ID of the offer as specified by the backend
+    /// </summary>
+    public int OfferId { get; set; }
+    
+    public SagaAnswer Answer { get; set; }
     
 }
