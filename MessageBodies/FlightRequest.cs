@@ -28,6 +28,10 @@ public record struct FlightRequest() : IMessageBody
     /// </summary>
     public DateTime BookTo { get; set; }
     /// <summary>
+    /// What datetime the temporary request was executed
+    /// </summary>
+    public DateTime TemporaryDateTime { get; set; }
+    /// <summary>
     /// amount of the passengers to take
     /// </summary>
     public int PassangerCount { get; set; }
