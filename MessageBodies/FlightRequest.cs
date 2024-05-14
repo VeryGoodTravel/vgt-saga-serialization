@@ -10,31 +10,31 @@ public record struct FlightRequest() : IMessageBody
     /// <summary>
     /// If the flight needs to be reserved for a limited time waiting for a payment
     /// </summary>
-    public bool Temporary { get; set; }
+    public bool? Temporary { get; set; }
     /// <summary>
     /// City the flight takes off
     /// </summary>
-    public string CityFrom { get; set; }
+    public string? CityFrom { get; set; }
     /// <summary>
     /// city the flight lands in
     /// </summary>
-    public string CityTo { get; set; }
+    public string? CityTo { get; set; }
     /// <summary>
     /// date the flight to the hotel takes place
     /// </summary>
-    public DateTime BookFrom { get; set; }
+    public DateTime? BookFrom { get; set; }
     /// <summary>
     /// date the return flight takes place
     /// </summary>
-    public DateTime BookTo { get; set; }
+    public DateTime? BookTo { get; set; }
     /// <summary>
     /// What datetime the temporary request was executed
     /// </summary>
-    public DateTime TemporaryDateTime { get; set; }
+    public DateTime? TemporaryDateTime { get; set; }
     /// <summary>
     /// amount of the passengers to take
     /// </summary>
-    public int PassangerCount { get; set; }
+    public int? PassangerCount { get; set; }
     
     /// <summary>
     /// Flight ID to book on full book
