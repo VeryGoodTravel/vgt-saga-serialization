@@ -24,7 +24,7 @@ public record struct BackendReply() : IMessageBody
     /// <summary>
     /// ID of the offer as specified by the backend
     /// </summary>
-    public int OfferId { get; set; }
+    public string OfferId { get; set; }
     
     public SagaAnswer Answer { get; set; }
     
