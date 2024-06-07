@@ -1,3 +1,6 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
 namespace vgt_saga_serialization.MessageBodies;
 
 public enum SagaAnswer
@@ -26,6 +29,7 @@ public record struct BackendReply() : IMessageBody
     /// </summary>
     public string OfferId { get; set; }
     
+    [JsonConverter(typeof(StringEnumConverter))]
     public SagaAnswer Answer { get; set; }
     
 }
