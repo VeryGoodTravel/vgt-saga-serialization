@@ -29,6 +29,7 @@ public class SagaJsonConverter : JsonConverter
     public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
     {
         var jToken = JToken.ReadFrom(reader);
+        Console.WriteLine("TEEEST");
         var jObj = jToken["MessageType"];
         object? bodyType = null;
         

@@ -45,8 +45,8 @@ public class Utils
             return null;
         }
         
-        _logger.Debug("Deserialized SAGA message | TransactionID: {id} | Type: {type} | MessageID {guid}", 
-            message.Value.TransactionId, message.Value.MessageType, message.Value.MessageId);
+        _logger.Debug("Deserialized SAGA message | TransactionID: {id} | Type: {type} | MessageID {guid} | {body}", 
+            message.Value.TransactionId, message.Value.MessageType, message.Value.MessageId, message.Value.Body);
         
         return message;
     }
