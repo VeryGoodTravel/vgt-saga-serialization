@@ -3,8 +3,13 @@ namespace vgt_saga_serialization.MessageBodies;
 /// <summary>
 /// reply of the hotel service
 /// </summary>
-public class FlightReply() : MessageBody
+public class FlightReply : MessageBody
 {
+    
+    public FlightReply()
+    {
+        MessageType = MessageType.FlightReply;
+    }
     /// <summary>
     /// ID number of the flight that got selected
     /// </summary>

@@ -5,8 +5,13 @@ namespace vgt_saga_serialization.MessageBodies;
 /// contains definition if the reservation is temporary (wait for payment)
 /// and all the data service needs
 /// </summary>
-public class HotelRequest() : MessageBody
+public class HotelRequest : MessageBody
 {
+
+    public HotelRequest()
+    {
+        MessageType = MessageType.HotelRequest;
+    }
     /// <summary>
     /// If the hotel needs to be reserved for a limited time waiting for a payment
     /// </summary>

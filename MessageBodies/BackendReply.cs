@@ -17,8 +17,18 @@ public enum SagaAnswer
 /// notifies the backends of the finished saga transaction
 /// It is sent to all instances of the backend
 /// </summary>
-public class BackendReply() : MessageBody
+public class BackendReply : MessageBody
 {
+    /// <summary>
+    /// reply from the OrderService to all the backends
+    /// notifies the backends of the finished saga transaction
+    /// It is sent to all instances of the backend
+    /// </summary>
+    public BackendReply()
+    {
+        MessageType = MessageType.BackendReply;
+    }
+
     /// <summary>
     /// Guid of the SAGA transaction
     /// </summary>

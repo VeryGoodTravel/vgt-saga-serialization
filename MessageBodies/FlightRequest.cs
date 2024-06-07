@@ -5,8 +5,13 @@ namespace vgt_saga_serialization.MessageBodies;
 /// contains definition if the reservation is temporary (wait for payment)
 /// and all the data service needs
 /// </summary>
-public class FlightRequest() : MessageBody
+public class FlightRequest : MessageBody
 {
+    
+    public FlightRequest()
+    {
+        MessageType = MessageType.FlightRequest;
+    }
     /// <summary>
     /// If the flight needs to be reserved for a limited time waiting for a payment
     /// </summary>
