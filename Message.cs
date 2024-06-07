@@ -38,7 +38,7 @@ public record struct Message
     /// <summary>
     /// Body of the command of type specified in MessageType
     /// </summary>
-    public IMessageBody? Body { get; set; }
+    public MessageBody Body { get; set; }
 }
 
 /// <summary>

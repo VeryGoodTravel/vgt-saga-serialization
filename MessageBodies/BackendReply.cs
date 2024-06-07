@@ -17,7 +17,7 @@ public enum SagaAnswer
 /// notifies the backends of the finished saga transaction
 /// It is sent to all instances of the backend
 /// </summary>
-public record struct BackendReply() : IMessageBody
+public class BackendReply() : MessageBody
 {
     /// <summary>
     /// Guid of the SAGA transaction

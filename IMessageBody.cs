@@ -4,7 +4,7 @@ namespace vgt_saga_serialization;
 /// Message body of the request or reply
 /// contains data needed by the microservice for the transaction
 /// </summary>
-public interface IMessageBody
+public class MessageBody
 {
     
 }

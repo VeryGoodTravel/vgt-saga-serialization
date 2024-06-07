@@ -3,7 +3,7 @@ namespace vgt_saga_serialization.MessageBodies;
 /// <summary>
 /// reply of the hotel service
 /// </summary>
-public record struct FlightReply() : IMessageBody
+public class FlightReply() : MessageBody
 {
     /// <summary>
     /// ID number of the flight that got selected

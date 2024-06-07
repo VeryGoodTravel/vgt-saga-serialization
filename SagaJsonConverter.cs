@@ -37,7 +37,7 @@ public class SagaJsonConverter : JsonConverter
         else bodyType = MessageType.Invalid;
 
         // read appropriate type of the message
-        IMessageBody? result = (MessageType?)bodyType switch
+        MessageBody? result = (MessageType?)bodyType switch
         {
             MessageType.OrderRequest => new OrderRequest(),
             MessageType.OrderReply => new OrderReply(),
@@ -61,6 +61,6 @@ public class SagaJsonConverter : JsonConverter
     /// <inheritdoc/>
     public override bool CanConvert(Type objectType)
     {
-        return objectType == typeof(IMessageBody);
+        return objectType == typeof(MessageBody);
     }
 }

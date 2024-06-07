@@ -5,7 +5,7 @@ namespace vgt_saga_serialization.MessageBodies;
 /// contains definition if the reservation is temporary (wait for payment)
 /// and all the data service needs
 /// </summary>
-public record struct HotelRequest() : IMessageBody
+public class HotelRequest() : MessageBody
 {
     /// <summary>
     /// If the hotel needs to be reserved for a limited time waiting for a payment
