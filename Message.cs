@@ -38,6 +38,7 @@ public record struct Message
     /// <summary>
     /// Body of the command of type specified in MessageType
     /// </summary>
+    [JsonConverter(typeof(SagaJsonConverter))]
     public MessageBody Body { get; set; }
 }
 
