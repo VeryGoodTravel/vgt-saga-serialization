@@ -33,7 +33,11 @@ public class Utils
     /// <returns> null if invalid otherwise deserialized Saga Message</returns>
     public Message? Deserialize(byte[] body)
     {
-        Message? message = JsonConvert.DeserializeObject<Message>(Encoding.UTF8.GetString(body), _serializer);
+        var str = Encoding.UTF8.GetString(body);
+        
+        _logger.Debug("Recieved SAGA message | {str}", str);
+        
+        Message? message = JsonConvert.DeserializeObject<Message>(str, _serializer);
 
         if (message == null)
         {
@@ -58,7 +62,7 @@ public class Utils
     {
         Error = delegate(object? sender, Newtonsoft.Json.Serialization.ErrorEventArgs args)
         {
-            _logger.Warn("Json serializer error occurred in SAGA messages handling. {e}", args.ErrorContext.Error.Message);
+            _logger.Warn("Json serializer error occurred in SAGA messages handling. {e} {s}", args.ErrorContext.Error.Message, args.ErrorContext.Error.Source);
             args.ErrorContext.Handled = true;
         },
         Converters = { new SagaJsonConverter() }
